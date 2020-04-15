@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="ui-inputgroup">
+    <input type="text" pInputText placeholder="Device Name" [(ngModel)]="deviceName">
+    <input type="text" pInputText placeholder="Login" [(ngModel)]="login">
+    <input type="password" pInputText placeholder="Password" [(ngModel)]="password">
+    <input type="text" pInputText placeholder="Cat's name" [(ngModel)]="name">
+    <input type="number" pInputText placeholder="Cat's weight" [(ngModel)]="weight">
+    <input type="number" pInputText placeholder="Cat's age" [(ngModel)]="age">
+    <input type="text" pInputText placeholder="Cat's breed" [(ngModel)]="breed">
+    <p-button label="Sign Up" (onClick)="registration()"></p-button>
+  </div>
+</div>
+
+<p-dialog header="Error" [(visible)]="errorMessage" [resizable]="false" [modal]="true" [responsive]="true"
+          [minY]="70" [maximizable]="true" [baseZIndex]="10000">
+  <span>{{ errorMessage }}</span>
+  <p-footer>
+    <button type="button" pButton (click)="errorMessage = undefined" label="Close"></button>
+  </p-footer>
+</p-dialog>
+
+<p-dialog header="Success" [(visible)]="successMessage" [resizable]="false" [modal]="true" [responsive]="true"
+          [minY]="70" [maximizable]="true" [baseZIndex]="10000">
+  <span>{{ successMessage }}</span>
+  <p-footer>
+    <button type="button" pButton (click)="confirmSuccessRegistration()" label="Go to the login page"></button>
+  </p-footer>
+</p-dialog>

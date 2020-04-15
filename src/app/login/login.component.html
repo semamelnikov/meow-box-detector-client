@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="ui-g ui-fluid">
+    <div class="ui-inputgroup">
+      <span class="ui-inputgroup-addon"><i class="pi pi-user"></i></span>
+      <input [(ngModel)]="login" pInputText placeholder="Login" type="text">
+    </div>
+    <div class="ui-inputgroup">
+      <span class="ui-inputgroup-addon"><i class="pi pi-check"></i></span>
+      <input [(ngModel)]="password" pInputText placeholder="Password" type="password">
+    </div>
+    <div class="ui-inputgroup">
+      <p-button (onClick)="loginSubmit()" label="Login"></p-button>
+    </div>
+  </div>
+  <div class="ui-inputgroup">
+    <div class="ui-g">
+      <div class="ui-g-7">
+        <p>Do not have an account?</p>
+      </div>
+      <div class="ui-g-2">
+        <p-button label="Registration" routerLink="/registration"></p-button>
+      </div>
+      <div class="ui-g-2"></div>
+    </div>
+  </div>
+</div>
+
+<p-dialog [(visible)]="errorMessage" [baseZIndex]="10000" [maximizable]="true" [minY]="70" [modal]="true"
+          [resizable]="false" [responsive]="true" header="Error">
+  <span>{{ errorMessage }}</span>
+  <p-footer>
+    <button (click)="errorMessage = undefined" label="Close" pButton type="button"></button>
+  </p-footer>
+</p-dialog>
