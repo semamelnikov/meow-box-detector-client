@@ -1,28 +1,28 @@
-<div class="container">
-  <div class="ui-inputgroup">
-    <input type="text" pInputText placeholder="Device Name" [(ngModel)]="deviceName">
-    <input type="text" pInputText placeholder="Login" [(ngModel)]="login">
-    <input type="password" pInputText placeholder="Password" [(ngModel)]="password">
-    <input type="text" pInputText placeholder="Cat's name" [(ngModel)]="name">
-    <input type="number" pInputText placeholder="Cat's weight" [(ngModel)]="weight">
-    <input type="number" pInputText placeholder="Cat's age" [(ngModel)]="age">
-    <input type="text" pInputText placeholder="Cat's breed" [(ngModel)]="breed">
-    <p-button label="Sign Up" (onClick)="registration()"></p-button>
+<div class="container registration">
+  <div class="registration-form">
+    <div><input [(ngModel)]="deviceName" pInputText placeholder="Device Name" type="text"></div>
+    <div><input [(ngModel)]="login" pInputText placeholder="Login" type="text"></div>
+    <div><input [(ngModel)]="password" pInputText placeholder="Password" type="password"></div>
+    <div><input [(ngModel)]="name" pInputText placeholder="Cat's name" type="text"></div>
+    <div><input [(ngModel)]="weight" pInputText placeholder="Cat's weight" type="number"></div>
+    <div><input [(ngModel)]="age" pInputText placeholder="Cat's age" type="number"></div>
+    <div><input [(ngModel)]="breed" pInputText placeholder="Cat's breed" type="text"></div>
+    <p-button (onClick)="registration()" label="Sign Up"></p-button>
   </div>
 </div>
 
-<p-dialog header="Error" [(visible)]="errorMessage" [resizable]="false" [modal]="true" [responsive]="true"
-          [minY]="70" [maximizable]="true" [baseZIndex]="10000">
+<p-dialog [(visible)]="errorMessage" [baseZIndex]="10000" [maximizable]="true" [minY]="70" [modal]="true"
+          [resizable]="false" [responsive]="true" header="Error">
   <span>{{ errorMessage }}</span>
   <p-footer>
-    <button type="button" pButton (click)="errorMessage = undefined" label="Close"></button>
+    <button (click)="errorMessage = undefined" label="Close" pButton type="button"></button>
   </p-footer>
 </p-dialog>
 
-<p-dialog header="Success" [(visible)]="successMessage" [resizable]="false" [modal]="true" [responsive]="true"
-          [minY]="70" [maximizable]="true" [baseZIndex]="10000">
+<p-dialog [(visible)]="successMessage" [baseZIndex]="10000" [maximizable]="true" [minY]="70" [modal]="true"
+          [resizable]="false" [responsive]="true" header="Success">
   <span>{{ successMessage }}</span>
   <p-footer>
-    <button type="button" pButton (click)="confirmSuccessRegistration()" label="Go to the login page"></button>
+    <button (click)="confirmSuccessRegistration()" label="Go to the login page" pButton type="button"></button>
   </p-footer>
 </p-dialog>

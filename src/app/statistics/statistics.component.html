@@ -1,1 +1,86 @@
-<p>statistics works!</p>
+<div class="container">
+  <h1>Статистика коробочного котовьего детектора</h1>
+  <div *ngIf="statistics" class="p-grid">
+    <div class="p-col-12">
+      <p-toggleButton (onChange)="changeDeviceSoundStatus()" [(ngModel)]="isSoundOn"
+                      [style]="{'width':'150px'}" offIcon="pi pi-times"
+                      offLabel="Пищалка выключена" onIcon="pi pi-check" onLabel="Пищалка включена"></p-toggleButton>
+    </div>
+    <div class="p-col-4"></div>
+    <div class="p-col-4">
+      <h3>Залезал в коробку больше всех за всё время</h3>
+      <app-cat [totalCatInfo]="statistics.allTime"></app-cat>
+    </div>
+    <div class="p-col-4"></div>
+    <div class="p-col-6">
+      <h3>Обнаружения котов в коробках в зависимости от дня суток за текущий месяц</h3>
+      <ngx-charts-pie-grid
+        [results]="statistics.monthAggregationByDayTime"
+        [view]="view"
+        scheme="picnic"></ngx-charts-pie-grid>
+    </div>
+    <div class="p-col-6">
+      <h3>Залезал в коробку больше всех за год</h3>
+      <app-cat [totalCatInfo]="statistics.year"></app-cat>
+    </div>
+    <div class="p-col-6">
+      <h3>Залезал в коробку больше всех за месяц</h3>
+      <app-cat [totalCatInfo]="statistics.month"></app-cat>
+    </div>
+    <div class="p-col-6">
+      <h3>Обнаружения котов в месяц за год</h3>
+      <ngx-charts-bar-vertical
+        [gradient]="true"
+        [legend]="true"
+        [results]="statistics.yearDetectionAggregationByMonth"
+        [showXAxisLabel]="true"
+        [showYAxisLabel]="true"
+        [view]="view"
+        [xAxisLabel]="xAxisLabel"
+        [xAxis]="true"
+        [yAxisLabel]="yAxisLabel"
+        [yAxis]="true"
+        scheme="cool"></ngx-charts-bar-vertical>
+    </div>
+    <div class="p-col-6">
+      <h3>Количество котиков разной породы</h3>
+      <ngx-charts-advanced-pie-chart
+        [gradient]="true"
+        [results]="statistics.aggregationByBreed"
+        [view]="view"
+        scheme="flame"></ngx-charts-advanced-pie-chart>
+    </div>
+    <div class="p-col-6">
+      <h3>Залезал в коробку больше всех за сегодня</h3>
+      <app-cat [totalCatInfo]="statistics.day"></app-cat>
+    </div>
+    <div class="p-col-6">
+      <h3>Топ котиков за месяц</h3>
+      <p-virtualScroller [value]="statistics.monthTopTen" scrollHeight="500px">
+        <ng-template let-i="index" let-totalCatInfo pTemplate="item">
+          <div class="p-grid">
+            <div class="p-col-3"></div>
+            <div class="p-col-6">
+              <app-cat [totalCatInfo]="totalCatInfo"></app-cat>
+            </div>
+            <div class="p-col-3"></div>
+          </div>
+        </ng-template>
+      </p-virtualScroller>
+    </div>
+    <div class="p-col-6">
+      <h3>Топ котиков за год</h3>
+      <p-virtualScroller [value]="statistics.yearTopHundred" scrollHeight="500px">
+        <ng-template let-i="index" let-totalCatInfo pTemplate="item">
+          <div class="p-grid">
+            <div class="p-col-3"></div>
+            <div class="p-col-6">
+              <app-cat [totalCatInfo]="totalCatInfo"></app-cat>
+            </div>
+            <div class="p-col-3"></div>
+          </div>
+        </ng-template>
+      </p-virtualScroller>
+    </div>
+  </div>
+</div>

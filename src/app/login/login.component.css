@@ -1,0 +1,14 @@
+@media all and (min-width: 400px) {
+  .login {
+    padding: 60px 0;
+  }
+
+  .login-form {
+    margin: 0 auto;
+    max-width: 390px;
+  }
+}
+
+input, p-button {
+  margin: 10px;
+}
